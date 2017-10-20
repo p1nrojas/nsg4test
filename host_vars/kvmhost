@@ -10,10 +10,10 @@ public_ip: "{{ hypervisor }}"
 ansible_host: "{{ hypervisor }}"
 br_connect:
   - { bridge: core, gateway: 192.168.0.1, prefix: 24, dhcp_min: 110, dhcp_max: 140 }
+  - { bridge: "none" }
   - { bridge: branch }
 
 sec_rules:
-  - { type: udp , dport: '123' , saddr: 0.0.0.0/0 }
   - { type: tcp , dport: '893' , saddr: 0.0.0.0/0 }
 
 dhcp_subnets:
@@ -22,7 +22,7 @@ dhcp_subnets:
       range_min: 192.168.0.110 ,
       range_max: 192.168.0.140 ,
       domain_name: "{{ domain_lab }}" ,
-      domain_name_server: 192.168.0.12 ,
+      domain_name_server: 8.8.8.8 ,
       router: 192.168.0.1 ,
       broadcast_address: 192.168.0.255 ,
       default_lease_time: 600000 ,

@@ -23,7 +23,7 @@ interfaces:
       
        }
   - { name: port2 ,
-      bridge: core ,
+      bridge: "none" ,
       
        }
   - { name: port3 ,
