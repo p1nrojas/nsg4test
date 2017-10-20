@@ -1,0 +1,23 @@
+---
+
+# creating ovs bridges
+
+- name: Create bridges at ovs
+  openvswitch_bridge:
+    bridge: "{{ item.bridge }}"
+    state: present
+  with_items: "{{ br_connect }}"
+
+# Creating ovs vxlan ports
+- name: "checking vxlan ports {{ item.bridge }}"
+  shell: ovs-vsctl show | grep {{ item.vxlan_port }}
+  register: vxlan_exist
+  ignore_errors: yes
+  with_items: "{{ vxlan_ports }}"
+
+- name: creating vxlan connectivity 
+  shell: ovs-vsctl add-port {{ item.bridge }} {{ item.vxlan_port }} -- set Interface {{ item.vxlan_port }} type=vxlan options:remote_ip={{ item.vxlan_dest }} options:key={{ item.vxlan_index }}
+  when: vxlan_exist|failed
+  ignore_errors: yes  
+  with_items: "{{ vxlan_ports }}" 
+

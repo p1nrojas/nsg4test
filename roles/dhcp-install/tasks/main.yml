@@ -1,0 +1,5 @@
+---
+# tasks file for dhcpd-install
+
+- include: 0_dhcp_install.yml
+  when: dhcp_subnets is defined

@@ -1,0 +1,15 @@
+---
+# Creating bare metals servers at packet.net
+
+- hosts: localhost
+  gather_facts: no
+  remote_user: root
+
+  pre_tasks:
+
+    - include_vars: "files_location.yml"
+    - include_vars: "packet-bmetals.yml"
+    - include_vars: "nuage-sdwan-instances.yml
+
+  tasks:
+   

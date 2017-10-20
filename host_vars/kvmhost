@@ -1,0 +1,30 @@
+# *** WARNING ***
+# This is a generated file. Manual changes to this file
+# will be lost if reset-build or build is run
+#
+
+device_name: kvmhost
+public_if: {{ bmetal_public_if }}
+private_ip: {{ bmetal_private_ip }}
+public_ip: {{ bmetal_public_ip }}
+br_connect:
+  - { bridge: core, gateway: 192.168.0.1, prefix: 24, dhcp_min: 110, dhcp_max: 140 }
+  - { bridge: branch }
+
+sec_rules:
+  - { type: udp , dport: '123' , saddr: 0.0.0.0/0 }
+  - { type: tcp , dport: '893' , saddr: 0.0.0.0/0 }
+
+dhcp_subnets:
+  - { subnet: 192.168.0.0 ,
+      netmask: 255.255.255.0 ,
+      range_min: 192.168.0.110 ,
+      range_max: 192.168.0.140 ,
+      domain_name: {{ domain_lab }} ,
+      domain_name_server: 192.168.0.12 ,
+      router: 192.168.0.1 ,
+      broadcast_address: 192.168.0.255 ,
+      default_lease_time: 600000 ,
+      max_lease_time: 7200000
+    }
+
