@@ -6,7 +6,7 @@
 description: client at branch1
 
 image_qcow2: /home/dev/images/ubuntu.qcow2
-image_url: http://147.75.78.35/ubuntu.qcow2
+image_url: "{{ ubuntu_image_url }}"
 hypervisor: core
 memory_KiB: 4194304
 vcpu_num: 2
@@ -19,7 +19,7 @@ No_cloud_init: True
 
 interfaces:
   - { name: eth0 ,
-      bridge: branch1 ,
+      bridge: branch ,
       
        }
 ntp_server:

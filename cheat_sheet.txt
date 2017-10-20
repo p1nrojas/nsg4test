@@ -1,1 +1,1 @@
-ansible-playbook -i hosts -e lab_domain=nsg_nuage.lab -e bmetal_public_ip=147.75.1.12 -e bmetal_private_ip=10.23.34.5 deploy.yml
+ansible-playbook -i hosts -e domain_lab=nuage.lab -e hypervisor=147.75.64.3 deploy.yml

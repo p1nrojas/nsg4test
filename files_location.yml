@@ -1,7 +1,0 @@
-# files release dependant
-url_base_location: "http://147.75.78.35/"
-url_nsg_qcow2: "nsg5.1.1.qcow2"
-
-# common files
-url_common_base_location: "http://147.75.78.35/"
-url_ubuntu_desktop_qcow2: "ubuntu.qcow2"

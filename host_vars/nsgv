@@ -6,7 +6,7 @@
 description: NSG-v at Branch 1
 
 image_qcow2: /home/dev/images/nsg5.1.1.qcow2
-image_url: http://147.75.78.35/nsg5.1.1.qcow2
+image_url: "{{ nsg_image_url }}"
 hypervisor: core
 memory_KiB: 4194304
 vcpu_num: 2
@@ -19,15 +19,15 @@ No_cloud_init: True
 
 interfaces:
   - { name: port1 ,
-      bridge: wan ,
+      bridge: core ,
       
        }
   - { name: port2 ,
-      bridge: inet ,
+      bridge: core ,
       
        }
   - { name: port3 ,
-      bridge: branch1 ,
+      bridge: branch ,
       
        }
 ntp_server:

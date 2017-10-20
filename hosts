@@ -5,13 +5,17 @@
 #
 
 [bmetal]
-kvmhost ansible_host=kvm-host ansible_user=root ansible_port=22
+kvmhost ansible_user=root ansible_port=22
+[bmetal:vars]
+bmetal_public_if="bond0"
 
 [nsg]
 nsgv
+[nsg:vars]
+nsg_image_url="https://nuage-secure-files.s3.amazonaws.com/5.1.1u1-files/nsg5.1.1.qcow2?Signature=s0jbappuG%2F07ZjgXGCTCvYDCFps%3D&Expires=1509116597&AWSAccessKeyId=AKIAJC7GIF6VUFVZ5HMA"
 
 [client]
 client
-
-[bmetal:vars]
+[client:vars]
+ubuntu_image_url="https://s3-us-west-2.amazonaws.com/nuage-demo-cala/common-files/ubuntu.qcow2"
 

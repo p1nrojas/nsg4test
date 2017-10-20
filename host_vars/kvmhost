@@ -4,9 +4,10 @@
 #
 
 device_name: kvmhost
-public_if: {{ bmetal_public_if }}
-private_ip: {{ bmetal_private_ip }}
-public_ip: {{ bmetal_public_ip }}
+public_if: "{{ bmetal_public_if }}"
+#private_ip: "{{ bmetal_private_ip }}"
+public_ip: "{{ hypervisor }}"
+ansible_host: "{{ hypervisor }}"
 br_connect:
   - { bridge: core, gateway: 192.168.0.1, prefix: 24, dhcp_min: 110, dhcp_max: 140 }
   - { bridge: branch }
@@ -20,7 +21,7 @@ dhcp_subnets:
       netmask: 255.255.255.0 ,
       range_min: 192.168.0.110 ,
       range_max: 192.168.0.140 ,
-      domain_name: {{ domain_lab }} ,
+      domain_name: "{{ domain_lab }}" ,
       domain_name_server: 192.168.0.12 ,
       router: 192.168.0.1 ,
       broadcast_address: 192.168.0.255 ,

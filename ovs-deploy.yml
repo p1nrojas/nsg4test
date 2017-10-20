@@ -22,10 +22,10 @@
   tasks:
 
     - name: checking connection to gateways
-      command: "ping -c 4 {{ '{' }}{{ '{' }} hostvars['core'].br_connect[0].gateway {{ '}' }}{{ '}' }}"
+      command: "ping -c 4 {{ '{' }}{{ '{' }} hostvars['kvmhost'].br_connect[0].gateway {{ '}' }}{{ '}' }}"
       when:
         - br_connect is defined
-        - device_name != 'core'
+        - device_name != 'kvmhost'
 
 - hosts: bmetal
   gather_facts: no
