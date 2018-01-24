@@ -9,6 +9,7 @@
 - name: Disabling selinux
   selinux:
     state: disabled
+  ignore_errors: yes
 
 - name: Install packages that ovs will need
   yum: name={{ item }} state=present

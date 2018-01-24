@@ -9,22 +9,33 @@ public_if: "{{ bmetal_public_if }}"
 public_ip: "{{ hypervisor }}"
 ansible_host: "{{ hypervisor }}"
 br_connect:
-  - { bridge: core, gateway: 192.168.0.1, prefix: 24, dhcp_min: 110, dhcp_max: 140 }
-  - { bridge: "none" }
+  - { bridge: uplinkA, gateway: 192.168.10.1, prefix: 24, dhcp_min: 110, dhcp_max: 140 }
+  - { bridge: uplinkB, gateway: 192.168.20.1, prefix: 24, dhcp_min: 110, dhcp_max: 140 }
   - { bridge: branch }
 
 sec_rules:
   - { type: tcp , dport: '893' , saddr: 0.0.0.0/0 }
 
 dhcp_subnets:
-  - { subnet: 192.168.0.0 ,
+  - { subnet: 192.168.10.0 ,
       netmask: 255.255.255.0 ,
-      range_min: 192.168.0.110 ,
-      range_max: 192.168.0.140 ,
+      range_min: 192.168.10.110 ,
+      range_max: 192.168.10.140 ,
       domain_name: "{{ domain_lab }}" ,
       domain_name_server: 8.8.8.8 ,
-      router: 192.168.0.1 ,
-      broadcast_address: 192.168.0.255 ,
+      router: 192.168.10.1 ,
+      broadcast_address: 192.168.10.255 ,
+      default_lease_time: 600000 ,
+      max_lease_time: 7200000
+    }
+  - { subnet: 192.168.20.0 ,
+      netmask: 255.255.255.0 ,
+      range_min: 192.168.20.110 ,
+      range_max: 192.168.20.140 ,
+      domain_name: "{{ domain_lab }}" ,
+      domain_name_server: 8.8.8.8 ,
+      router: 192.168.20.1 ,
+      broadcast_address: 192.168.20.255 ,
       default_lease_time: 600000 ,
       max_lease_time: 7200000
     }

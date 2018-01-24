@@ -19,11 +19,11 @@ No_cloud_init: True
 
 interfaces:
   - { name: port1 ,
-      bridge: core ,
+      bridge: "uplinkA" ,
       
        }
   - { name: port2 ,
-      bridge: "none" ,
+      bridge: "uplinkB" ,
       
        }
   - { name: port3 ,
@@ -34,6 +34,6 @@ ntp_server:
   - 192.168.0.12
 dns:
   servers:
-    - 192.168.0.12
+    - 8.8.8.8
 
 

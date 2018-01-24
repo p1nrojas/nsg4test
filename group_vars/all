@@ -4,6 +4,6 @@
 # Changes made to this file may be overwritten.
 #
 
-domain: nuage511u1.lab
+domain: nuage40r8.lab
 
-files_location: 'http://147.75.78.35/'
+#files_location: 'http://147.75.78.35/'
